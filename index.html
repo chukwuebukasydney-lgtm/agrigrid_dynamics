@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgriGrid Dynamics | Autonomous Dual-Use Agrivoltaics & Microgrid Orchestration</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <script>
+    tailwind.config = {
+      darkMode: ['class', '[data-theme="dark"]'],
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              emerald: '#10B981',
+              cyan: '#06B6D4',
+              amber: '#F59E0B',
+              dark: '#070B14',
+              card: '#0D1527'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="tech-grid-bg text-slate-100 selection:bg-emerald-500/30 selection:text-emerald-300">
+
+  <!-- ========================================================================
+       TOP TELEMETRY BANNER & HEADER
+       ======================================================================== -->
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-opacity-90 border-b border-white/5 transition-colors duration-300" style="background-color: var(--nav-backdrop);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Brand Logo -->
+        <a href="#home" class="flex items-center gap-3.5 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 via-teal-500 to-cyan-500 p-0.5 shadow-lg shadow-emerald-500/20 group-hover:shadow-emerald-500/40 transition-shadow">
+            <div class="w-full h-full bg-[#070B14] rounded-[10px] flex items-center justify-center">
+              <svg class="w-6 h-6 text-emerald-400 group-hover:scale-105 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07l14.14-14.14" stroke-opacity="0.3"/>
+                <path d="M4 14l8-8 8 8" stroke="currentColor" stroke-linecap="round"/>
+                <path d="M12 6v14" stroke="#06B6D4" stroke-linecap="round"/>
+                <circle cx="12" cy="18" r="2" fill="#10B981"/>
+              </svg>
+            </div>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-xl font-bold tracking-tight text-white group-hover:text-emerald-400 transition-colors">AgriGrid</span>
+              <span class="text-xs uppercase tracking-widest px-1.5 py-0.5 rounded font-mono font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Dynamics</span>
+            </div>
+            <p class="text-[11px] text-slate-400 tracking-wide">Agrivoltaics & Microgrid Orchestrator</p>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="#home" class="nav-link relative text-sm font-medium text-slate-300 hover:text-white transition-colors">Home</a>
+          <a href="#solution" class="nav-link relative text-sm font-medium text-slate-300 hover:text-white transition-colors">AI Solution</a>
+          <a href="#how-it-works" class="nav-link relative text-sm font-medium text-slate-300 hover:text-white transition-colors">How It Works</a>
+          <a href="#pricing" class="nav-link relative text-sm font-medium text-slate-300 hover:text-white transition-colors">Pricing</a>
+          <a href="#about" class="nav-link relative text-sm font-medium text-slate-300 hover:text-white transition-colors">About Us</a>
+          <a href="#contact" class="nav-link relative text-sm font-medium text-slate-300 hover:text-white transition-colors">Contact</a>
+        </nav>
+
+        <!-- Right Side: Theme Toggle & Primary CTA -->
+        <div class="hidden md:flex items-center gap-4">
+          <!-- Light/Dark Mode Toggle -->
+          <button id="theme-toggle" type="button" aria-label="Toggle Theme" class="p-2.5 rounded-xl border border-white/10 hover:border-emerald-500/40 bg-slate-900/40 text-slate-300 hover:text-emerald-400 transition-all">
+            <i data-lucide="sun" class="theme-toggle-icon w-4 h-4"></i>
+          </button>
+
+          <!-- Request Demo Button -->
+          <a href="#contact" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-semibold text-sm shadow-md shadow-emerald-500/25 transition-all transform hover:-translate-y-0.5">
+            <span>Request Demo</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <div class="flex items-center gap-2 md:hidden">
+          <button id="theme-toggle-mobile" type="button" aria-label="Toggle Theme" class="p-2 rounded-lg border border-white/10 bg-slate-900/60 text-slate-300">
+            <i data-lucide="sun" class="theme-toggle-icon w-4 h-4"></i>
+          </button>
+          <button id="mobile-menu-toggle" type="button" aria-label="Open Mobile Menu" class="p-2 rounded-lg border border-white/10 text-slate-300 hover:text-white focus:outline-none">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden border-b border-white/10 bg-slate-950/95 backdrop-blur-xl px-4 pt-3 pb-6 space-y-3">
+      <a href="#home" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-slate-200 hover:bg-white/5">Home</a>
+      <a href="#solution" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-slate-200 hover:bg-white/5">AI Solution</a>
+      <a href="#how-it-works" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-slate-200 hover:bg-white/5">How It Works</a>
+      <a href="#pricing" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-slate-200 hover:bg-white/5">Pricing</a>
+      <a href="#about" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-slate-200 hover:bg-white/5">About Us</a>
+      <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-lg text-base font-medium text-slate-200 hover:bg-white/5">Contact</a>
+      <div class="pt-2">
+        <a href="#contact" class="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-500 text-slate-950 font-bold text-sm">
+          <span>Request Technical Assessment</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ========================================================================
+         HERO SECTION: INDUSTRIAL DUAL-USE ORCHESTRATION
+         ======================================================================== -->
+    <section id="home" class="relative pt-12 pb-24 overflow-hidden">
+      <!-- Glow background accents -->
+      <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[350px] bg-emerald-500/10 blur-[130px] pointer-events-none rounded-full"></div>
+      <div class="absolute top-1/3 right-10 w-[400px] h-[300px] bg-cyan-500/10 blur-[120px] pointer-events-none rounded-full"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <!-- Live System Operational Pill -->
+        <div class="flex justify-center mb-8">
+          <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full border border-emerald-500/30 bg-emerald-950/40 text-xs font-mono text-emerald-300 shadow-inner backdrop-blur-md">
+            <span class="live-beacon"></span>
+            <span class="tracking-wide">BI-DIRECTIONAL RL DISPATCH ACTIVE</span>
+            <span class="text-slate-500">|</span>
+            <span class="text-cyan-400 font-semibold">VPP LATENCY &lt; 280ms</span>
+          </div>
+        </div>
+
+        <!-- Main Headline -->
+        <div class="text-center max-w-4xl mx-auto">
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15]">
+            Autonomous Dual-Use <br>
+            <span class="gradient-text-emerald">Agrivoltaics & Microgrid</span> <br>
+            Energy Orchestrator
+          </h1>
+          <p class="mt-6 text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto font-normal leading-relaxed">
+            Optimizes crop microclimates and sells surplus rural clean energy to the grid. An intelligent software orchestration layer harmonizing crop physiology with wholesale power markets.
+          </p>
+
+          <!-- Primary CTAs -->
+          <div class="mt-9 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="#how-it-works" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-bold text-sm shadow-xl shadow-emerald-500/20 flex items-center justify-center gap-2.5 transition-all">
+              <i data-lucide="play-circle" class="w-5 h-5"></i>
+              <span>Launch Agrivoltaic Simulator</span>
+            </a>
+            <a href="#contact" class="w-full sm:w-auto px-8 py-3.5 rounded-xl border border-white/15 hover:border-emerald-500/40 bg-slate-900/60 hover:bg-slate-800/60 text-slate-200 font-semibold text-sm backdrop-blur-md flex items-center justify-center gap-2.5 transition-all">
+              <i data-lucide="file-check-2" class="w-5 h-5 text-emerald-400"></i>
+              <span>Request Technical Demo</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero Telemetry Matrix Preview Card -->
+        <div class="mt-16 max-w-5xl mx-auto">
+          <div class="glass-panel glass-panel-glow p-6 sm:p-8 rounded-2xl shadow-2xl">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between pb-6 border-b border-white/10 gap-4">
+              <div class="flex items-center gap-3">
+                <div class="w-3 h-3 rounded-full bg-emerald-400"></div>
+                <h3 class="font-mono text-sm tracking-wider uppercase text-slate-300">AgriGrid Orchestration Matrix // Live Telemetry Feed</h3>
+              </div>
+              <div class="flex items-center gap-4 text-xs font-mono text-slate-400">
+                <span>CANOPY PAR SENSOR: <strong class="text-emerald-400">NOMINAL</strong></span>
+                <span>•</span>
+                <span>GRID ARBITRAGE: <strong class="text-cyan-400">PEAK DISPATCH</strong></span>
+              </div>
+            </div>
+
+            <!-- 4 Telemetry Metrics -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 pt-6">
+              <div class="p-4 rounded-xl bg-black/30 border border-white/5">
+                <span class="text-xs text-slate-400 uppercase tracking-wider block font-mono">Panel Tilt Angle</span>
+                <span class="text-2xl sm:text-3xl font-bold font-mono text-emerald-400 mt-1 block">-24.5°</span>
+                <span class="text-[11px] text-slate-400 mt-1 flex items-center gap-1">
+                  <i data-lucide="shield-check" class="w-3 h-3 text-emerald-400"></i> Canopy Shade Active
+                </span>
+              </div>
+
+              <div class="p-4 rounded-xl bg-black/30 border border-white/5">
+                <span class="text-xs text-slate-400 uppercase tracking-wider block font-mono">Crop PAR Radiation</span>
+                <span class="text-2xl sm:text-3xl font-bold font-mono text-teal-300 mt-1 block">1,480 <span class="text-xs font-normal">μmol/m²</span></span>
+                <span class="text-[11px] text-slate-400 mt-1 flex items-center gap-1">
+                  <i data-lucide="sprout" class="w-3 h-3 text-teal-400"></i> 98% Photosynthetic Target
+                </span>
+              </div>
+
+              <div class="p-4 rounded-xl bg-black/30 border border-white/5">
+                <span class="text-xs text-slate-400 uppercase tracking-wider block font-mono">Cold Storage Load</span>
+                <span class="text-2xl sm:text-3xl font-bold font-mono text-cyan-400 mt-1 block">285 <span class="text-xs font-normal">kW</span></span>
+                <span class="text-[11px] text-slate-400 mt-1 flex items-center gap-1">
+                  <i data-lucide="cpu" class="w-3 h-3 text-cyan-400"></i> Solar-Synced Demand
+                </span>
+              </div>
+
+              <div class="p-4 rounded-xl bg-black/30 border border-white/5">
+                <span class="text-xs text-slate-400 uppercase tracking-wider block font-mono">VPP Spot Arbitrage</span>
+                <span class="text-2xl sm:text-3xl font-bold font-mono text-amber-400 mt-1 block">$342 <span class="text-xs font-normal">/MWh</span></span>
+                <span class="text-[11px] text-slate-400 mt-1 flex items-center gap-1">
+                  <i data-lucide="zap" class="w-3 h-3 text-amber-400"></i> High-Margin Grid Export
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         THE DUAL CHALLENGE & THE AI SOLUTION SECTION
+         ======================================================================== -->
+    <section id="solution" class="py-24 border-t border-white/5 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-xs uppercase font-mono tracking-widest text-emerald-400 font-bold bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">The Dual Challenge & Breakthrough</span>
+          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mt-4">
+            Solving Agricultural Climate Volatility and Rural Grid Congestion
+          </h2>
+          <p class="mt-4 text-slate-300 leading-relaxed">
+            Static solar panels force an unacceptable compromise: they either starve crops of photosynthetically active radiation or dump power when spot market prices hit rock bottom. AgriGrid Dynamics replaces rigid timers with multi-objective bi-directional reinforcement learning.
+          </p>
+        </div>
+
+        <!-- Two Columns: The Farm Problem vs The Grid Challenge -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+          
+          <!-- Column 1: Agricultural Vulnerability -->
+          <div class="glass-panel p-8 rounded-2xl border-l-4 border-l-amber-500">
+            <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-6 text-amber-400">
+              <i data-lucide="alert-triangle" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3">The Agricultural Bottleneck</h3>
+            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+              Modern farms face severe climate unpredictability, soil moisture depletion, and skyrocketing diesel and electricity costs to maintain groundwater irrigation pumps, grain drying facilities, and cold storage chillers.
+            </p>
+            <ul class="space-y-2.5 text-xs text-slate-300 font-mono">
+              <li class="flex items-center gap-2">
+                <span class="text-amber-400">✕</span> Unmitigated midday canopy scorch &amp; evapotranspiration
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-amber-400">✕</span> Escalating peak utility demand tariffs during harvest chill
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-amber-400">✕</span> Fixed agrivoltaic racks blocking essential morning PAR light
+              </li>
+            </ul>
+          </div>
+
+          <!-- Column 2: Regional Grid Instability -->
+          <div class="glass-panel p-8 rounded-2xl border-l-4 border-l-cyan-500">
+            <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-6 text-cyan-400">
+              <i data-lucide="network" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3">The Regional Grid Challenge</h3>
+            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+              Regional utility distribution operators struggle with rural transmission congestion, intermittent solar injection, and the lack of flexible fast-dispatch reserves to balance local feeder frequency during renewable surges.
+            </p>
+            <ul class="space-y-2.5 text-xs text-slate-300 font-mono">
+              <li class="flex items-center gap-2">
+                <span class="text-cyan-400">✕</span> Solar curtailment when midday wholesale prices drop negative
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-cyan-400">✕</span> High transmission upgrade capital requirements for rural co-ops
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-cyan-400">✕</span> Inability to aggregate distributed rural microgrid loads
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- 3 Pillars of AgriGrid Dynamics AI Solution -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <!-- Pillar 1 -->
+          <div class="glass-panel p-8 rounded-2xl hover:border-emerald-500/40 transition-all group">
+            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-6 text-emerald-400 group-hover:scale-110 transition-transform">
+              <i data-lucide="sun-medium" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Reinforcement Learning Actuation</h3>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Dynamically actuates solar tracker tilt angles based on real-time photosynthetic requirements of the specific crop canopy, soil moisture levels, and real-time electricity spot market prices.
+            </p>
+          </div>
+
+          <!-- Pillar 2 -->
+          <div class="glass-panel p-8 rounded-2xl hover:border-cyan-500/40 transition-all group">
+            <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-6 text-cyan-400 group-hover:scale-110 transition-transform">
+              <i data-lucide="sliders-horizontal" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Farm Demand-Response Engine</h3>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Synchronizes high-draw farm machinery—groundwater irrigation pumps, grain dryers, cold store chilling units—to operate during peak generation windows or negative wholesale electricity price dips.
+            </p>
+          </div>
+
+          <!-- Pillar 3 -->
+          <div class="glass-panel p-8 rounded-2xl hover:border-amber-500/40 transition-all group">
+            <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/20 flex items-center justify-center mb-6 text-amber-400 group-hover:scale-110 transition-transform">
+              <i data-lucide="activity" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Virtual Power Plant (VPP) Dispatch</h3>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Aggregates farm battery storage and surplus agrivoltaic output into a responsive VPP to bid into frequency regulation and capacity markets, unlocking premium grid revenue.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         HOW IT WORKS SECTION: HEAVY INTERACTIVE ANIMATION & EXPLANATORY PIPELINE
+         ======================================================================== -->
+    <section id="how-it-works" class="py-24 bg-slate-950/60 border-t border-white/5 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <span class="text-xs uppercase font-mono tracking-widest text-emerald-400 font-bold bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">Interactive Visual Simulation</span>
+          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mt-4">
+            How AgriGrid Dynamics Works in Real Time
+          </h2>
+          <p class="mt-4 text-slate-300 leading-relaxed">
+            Experience our bi-directional reinforcement learning orchestrator in action. Observe how the system balances plant physiology computer vision with real-time wholesale energy spot arbitrage.
+          </p>
+        </div>
+
+        <!-- SIMULATOR CONTROL PANEL -->
+        <div class="glass-panel p-6 sm:p-8 rounded-2xl mb-8">
+          
+          <!-- Mode Preset Buttons & Scrubber -->
+          <div class="flex flex-col lg:flex-row items-center justify-between gap-6 pb-6 border-b border-white/10">
+            <div>
+              <span class="text-xs font-mono uppercase tracking-wider text-slate-400 block mb-2">Autonomous Actuation Presets</span>
+              <div class="flex flex-wrap gap-2.5">
+                <button type="button" class="sim-mode-btn px-4 py-2 rounded-xl border border-white/10 hover:border-emerald-500/40 bg-slate-900/60 text-xs font-medium text-slate-200 transition-all" data-mode="par_optimal">
+                  🌱 Mode 1: Morning PAR Light (Crop Yield)
+                </button>
+                <button type="button" class="sim-mode-btn active px-4 py-2 rounded-xl border border-emerald-500 bg-emerald-500/20 text-xs font-medium text-emerald-300 transition-all" data-mode="heat_shield">
+                  🛡️ Mode 2: Midday Canopy Shield &amp; Chilling
+                </button>
+                <button type="button" class="sim-mode-btn px-4 py-2 rounded-xl border border-white/10 hover:border-cyan-500/40 bg-slate-900/60 text-xs font-medium text-slate-200 transition-all" data-mode="vpp_arbitrage">
+                  ⚡ Mode 3: Peak VPP Grid Arbitrage ($/MWh)
+                </button>
+              </div>
+            </div>
+
+            <!-- Manual Scrub Slider -->
+            <div class="w-full lg:w-72">
+              <div class="flex justify-between text-xs font-mono text-slate-400 mb-2">
+                <span>Diurnal Sun Scrub</span>
+                <span>06:00 &mdash; 20:00</span>
+              </div>
+              <input type="range" id="sim-time-slider" min="0" max="100" value="54" class="w-full">
+            </div>
+          </div>
+
+          <!-- Active Mode Explanatory Description -->
+          <div class="pt-4 flex items-start gap-3">
+            <i data-lucide="info" class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5"></i>
+            <p id="sim-mode-desc" class="text-xs sm:text-sm text-slate-300 leading-relaxed font-mono">
+              Midday Microclimate Shield: Panels angle to cast dense cooling shadow over vulnerable crop canopy, dropping ground temperature by 5.4°C and synchronizing chillers with peak generation.
+            </p>
+          </div>
+
+          <!-- THE 60FPS CANVAS CONTAINER -->
+          <div class="mt-6 canvas-wrapper relative" style="height: 440px;">
+            <canvas id="agrivoltaics-canvas" class="w-full h-full block"></canvas>
+
+            <!-- Overlay Legend / Badges -->
+            <div class="absolute top-4 left-4 flex flex-wrap gap-2 pointer-events-none">
+              <span class="px-2.5 py-1 rounded bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-mono text-emerald-400 flex items-center gap-1.5">
+                <span class="live-beacon"></span> Agrivoltaic Tracker Arrays
+              </span>
+              <span class="px-2.5 py-1 rounded bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-mono text-cyan-400">
+                Cold Storage Thermal Battery
+              </span>
+              <span class="px-2.5 py-1 rounded bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-mono text-amber-400">
+                Utility Interconnection Feeder
+              </span>
+            </div>
+          </div>
+
+          <!-- Real-Time Telemetry Bar Beneath Simulator -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 mt-6 pt-6 border-t border-white/10">
+            <div class="bg-black/30 p-3 rounded-xl border border-white/5">
+              <span class="text-[10px] font-mono text-slate-400 block uppercase">Panel Tilt</span>
+              <span id="telemetry-tilt" class="text-lg font-bold font-mono text-emerald-400">-28°</span>
+            </div>
+            <div class="bg-black/30 p-3 rounded-xl border border-white/5">
+              <span class="text-[10px] font-mono text-slate-400 block uppercase">Crop PAR Flux</span>
+              <span id="telemetry-par" class="text-lg font-bold font-mono text-teal-300">1890 μmol</span>
+            </div>
+            <div class="bg-black/30 p-3 rounded-xl border border-white/5">
+              <span class="text-[10px] font-mono text-slate-400 block uppercase">Soil Moisture</span>
+              <span id="telemetry-soil" class="text-lg font-bold font-mono text-cyan-400">65%</span>
+            </div>
+            <div class="bg-black/30 p-3 rounded-xl border border-white/5">
+              <span class="text-[10px] font-mono text-slate-400 block uppercase">Equipment Load</span>
+              <span id="telemetry-cold" class="text-lg font-bold font-mono text-blue-400">310 kW</span>
+            </div>
+            <div class="bg-black/30 p-3 rounded-xl border border-white/5">
+              <span class="text-[10px] font-mono text-slate-400 block uppercase">Grid Spot Price</span>
+              <span id="telemetry-price" class="text-lg font-bold font-mono text-amber-400">$185 /MWh</span>
+            </div>
+            <div class="bg-black/30 p-3 rounded-xl border border-white/5">
+              <span class="text-[10px] font-mono text-slate-400 block uppercase">Net VPP Export</span>
+              <span id="telemetry-export" class="text-lg font-bold font-mono text-emerald-400">1480 kW</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 4-STAGE ARCHITECTURE PIPELINE EXPLAINER TABS -->
+        <div class="mt-16">
+          <div class="text-center mb-8">
+            <h3 class="text-2xl font-bold text-white">Full-Stack Control Architecture</h3>
+            <p class="text-slate-400 text-sm mt-1">Pure software orchestration layer partnering with existing solar EPCs and hardware OEMs</p>
+          </div>
+
+          <!-- Step Navigation Tabs -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+            <button type="button" class="pipeline-step-tab active-pipeline p-4 rounded-xl text-left border border-emerald-500 bg-emerald-500/10 transition-all cursor-pointer" data-step="step1">
+              <span class="text-[10px] font-mono text-emerald-400 font-bold block uppercase">Step 01</span>
+              <span class="text-sm font-bold text-white mt-0.5 block">Weather &amp; Soil IoT</span>
+              <span class="text-[11px] text-slate-400 mt-1 block">Satellite vision &amp; ground probes</span>
+            </button>
+
+            <button type="button" class="pipeline-step-tab p-4 rounded-xl text-left border border-transparent bg-slate-900/60 hover:bg-slate-800/60 transition-all cursor-pointer" data-step="step2">
+              <span class="text-[10px] font-mono text-cyan-400 font-bold block uppercase">Step 02</span>
+              <span class="text-sm font-bold text-white mt-0.5 block">Bi-Directional RL</span>
+              <span class="text-[11px] text-slate-400 mt-1 block">Multi-objective neural controller</span>
+            </button>
+
+            <button type="button" class="pipeline-step-tab p-4 rounded-xl text-left border border-transparent bg-slate-900/60 hover:bg-slate-800/60 transition-all cursor-pointer" data-step="step3">
+              <span class="text-[10px] font-mono text-amber-400 font-bold block uppercase">Step 03</span>
+              <span class="text-sm font-bold text-white mt-0.5 block">Actuation &amp; Storage</span>
+              <span class="text-[11px] text-slate-400 mt-1 block">Tilt adjustment &amp; load balancing</span>
+            </button>
+
+            <button type="button" class="pipeline-step-tab p-4 rounded-xl text-left border border-transparent bg-slate-900/60 hover:bg-slate-800/60 transition-all cursor-pointer" data-step="step4">
+              <span class="text-[10px] font-mono text-teal-400 font-bold block uppercase">Step 04</span>
+              <span class="text-sm font-bold text-white mt-0.5 block">VPP Dispatch</span>
+              <span class="text-[11px] text-slate-400 mt-1 block">Utility balancing &amp; arbitrage</span>
+            </button>
+          </div>
+
+          <!-- Step Panel 1 -->
+          <div class="pipeline-step-panel glass-panel p-8 rounded-2xl" data-panel="step1">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div>
+                <span class="text-xs font-mono text-emerald-400 uppercase tracking-widest font-semibold">Sensor Ingestion Layer</span>
+                <h4 class="text-2xl font-bold text-white mt-2 mb-4">Continuous Crop Physiology &amp; Atmosphere Ingestion</h4>
+                <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                  Multi-spectral satellite imagery is blended with localized subterranean capacitive soil moisture sensors, ambient PAR quantum sensors, and micro-weather radar.
+                </p>
+                <div class="space-y-2 text-xs font-mono text-slate-300">
+                  <div class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                    <span>NDVI &amp; Chlorophyll Fluorescence computer vision monitoring</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                    <span>Sub-surface root moisture depletion gradients</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                    <span>Hyper-local solar irradiance and cloud shadow predictive tracking</span>
+                  </div>
+                </div>
+              </div>
+              <div class="p-6 rounded-xl bg-black/40 border border-white/5 font-mono text-xs text-slate-300 space-y-3">
+                <div class="text-emerald-400 font-bold border-b border-white/10 pb-2 flex items-center justify-between">
+                  <span>TELEMETRY_INGEST.STATUS</span>
+                  <span class="text-[10px] bg-emerald-500/20 px-2 py-0.5 rounded text-emerald-300">STREAMING</span>
+                </div>
+                <div class="text-slate-400">
+                  &gt; SATELLITE_BAND_RED_EDGE: 0.742 µm<br>
+                  &gt; CANOPY_TEMP_DELTA: -3.8°C vs Ambient<br>
+                  &gt; ROOT_ZONE_WATER_POTENTIAL: -42 kPa<br>
+                  &gt; PREDICTED_CLOUD_SHADOW_ETA: +18.4 min
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step Panel 2 -->
+          <div class="pipeline-step-panel hidden glass-panel p-8 rounded-2xl" data-panel="step2">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div>
+                <span class="text-xs font-mono text-cyan-400 uppercase tracking-widest font-semibold">AI Decision Engine</span>
+                <h4 class="text-2xl font-bold text-white mt-2 mb-4">Bi-Directional Reinforcement Learning Optimization</h4>
+                <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                  Unlike traditional agrivoltaics that rely on crude astronomical clocks or static timers, our dual-objective policy network simultaneously evaluates plant yield economics against wholesale power spot prices.
+                </p>
+                <div class="space-y-2 text-xs font-mono text-slate-300">
+                  <div class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                    <span>Multi-objective reward function: Maximize [Crop Value + Energy Net Revenue]</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                    <span>Dynamic hedging against spot price collapse and negative pricing</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                    <span>Motor lifecycle wear-and-tear constraint penalization</span>
+                  </div>
+                </div>
+              </div>
+              <div class="p-6 rounded-xl bg-black/40 border border-white/5 font-mono text-xs text-slate-300 space-y-3">
+                <div class="text-cyan-400 font-bold border-b border-white/10 pb-2 flex items-center justify-between">
+                  <span>RL_POLICY_CONVERGENCE</span>
+                  <span class="text-[10px] bg-cyan-500/20 px-2 py-0.5 rounded text-cyan-300">OPTIMAL</span>
+                </div>
+                <div class="text-slate-400">
+                  &gt; VALUE_OBJECTIVE_CROP_WEIGHT: 0.58<br>
+                  &gt; VALUE_OBJECTIVE_GRID_WEIGHT: 0.42<br>
+                  &gt; ESTIMATED_EPISODE_REWARD: +$1,842.10/day<br>
+                  &gt; ACTUATION_POLICY: HORIZONTAL_SHADE_MODULATION
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step Panel 3 -->
+          <div class="pipeline-step-panel hidden glass-panel p-8 rounded-2xl" data-panel="step3">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div>
+                <span class="text-xs font-mono text-amber-400 uppercase tracking-widest font-semibold">Physical Execution Layer</span>
+                <h4 class="text-2xl font-bold text-white mt-2 mb-4">Precision Tracker Actuation &amp; Thermal Buffering</h4>
+                <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                  Actuation signals are dispatched via standard SCADA and Modbus/CAN bus interfaces to solar tracker slew drives, simultaneously modulating heavy on-farm inductive loads.
+                </p>
+                <div class="space-y-2 text-xs font-mono text-slate-300">
+                  <div class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                    <span>Slew drive tracker angular resolution within 0.1°</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                    <span>Cold storage pre-cooling cycles synchronized to peak generation</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                    <span>Irrigation pump scheduling during lowest net-cost tariff blocks</span>
+                  </div>
+                </div>
+              </div>
+              <div class="p-6 rounded-xl bg-black/40 border border-white/5 font-mono text-xs text-slate-300 space-y-3">
+                <div class="text-amber-400 font-bold border-b border-white/10 pb-2 flex items-center justify-between">
+                  <span>ACTUATOR_DISPATCH.LOG</span>
+                  <span class="text-[10px] bg-amber-500/20 px-2 py-0.5 rounded text-amber-300">SYNCHRONIZED</span>
+                </div>
+                <div class="text-slate-400">
+                  &gt; SLEW_DRIVE_MOTOR_ARRAY: TILT_CMD(-28.0°)<br>
+                  &gt; COLD_CHILLER_ZONE_A: 100%_DUTY (PRE-COOLING)<br>
+                  &gt; DEEP_WELL_IRRIGATION: HOLD_OFF (PEAK_DISPATCH_WINDOW)<br>
+                  &gt; BESS_SOC_CHARGE_LEVEL: 94.2%
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step Panel 4 -->
+          <div class="pipeline-step-panel hidden glass-panel p-8 rounded-2xl" data-panel="step4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <div>
+                <span class="text-xs font-mono text-teal-400 uppercase tracking-widest font-semibold">Grid Monetization Layer</span>
+                <h4 class="text-2xl font-bold text-white mt-2 mb-4">Virtual Power Plant (VPP) Utility Settlement</h4>
+                <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                  Surplus generation and aggregated storage are dispatched into regional energy wholesale markets, spinning reserves, and capacity programs—generating recurring arbitrage cash flow for farm operations.
+                </p>
+                <div class="space-y-2 text-xs font-mono text-slate-300">
+                  <div class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-teal-400"></span>
+                    <span>Fast-frequency response &amp; ancillary grid stabilization bids</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-teal-400"></span>
+                    <span>Automated Renewable Energy Certificate (REC) and carbon tracking</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-teal-400"></span>
+                    <span>10%–20% transparent revenue share on net arbitrage generated</span>
+                  </div>
+                </div>
+              </div>
+              <div class="p-6 rounded-xl bg-black/40 border border-white/5 font-mono text-xs text-slate-300 space-y-3">
+                <div class="text-teal-400 font-bold border-b border-white/10 pb-2 flex items-center justify-between">
+                  <span>VPP_DISPATCH_SETTLEMENT</span>
+                  <span class="text-[10px] bg-teal-500/20 px-2 py-0.5 rounded text-teal-300">CLEARED</span>
+                </div>
+                <div class="text-slate-400">
+                  &gt; ISO_MARKET_NODE: RURAL_FEEDER_21A<br>
+                  &gt; SETTLEMENT_PRICE: $342.50 / MWh<br>
+                  &gt; DISPATCH_VOLUME: 1,480 kWh / hr<br>
+                  &gt; NET_CARBON_AVOIDANCE: 1.18 MT CO2e
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         INTERACTIVE ROI & REVENUE CALCULATOR
+         ======================================================================== -->
+    <section class="py-24 border-t border-white/5 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="glass-panel p-8 sm:p-12 rounded-3xl">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            
+            <div class="lg:col-span-5 space-y-6">
+              <span class="text-xs uppercase font-mono tracking-widest text-emerald-400 font-bold bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">Economics &amp; Yield Modeler</span>
+              <h3 class="text-3xl font-bold tracking-tight text-white">Estimate Your Site's Dual-Revenue Potential</h3>
+              <p class="text-slate-300 text-sm leading-relaxed">
+                Calculate the combined economic value of crop yield stabilization, soil moisture retention, and wholesale grid energy arbitrage for your acreage.
+              </p>
+
+              <!-- Inputs -->
+              <div class="space-y-5 pt-4">
+                <div>
+                  <div class="flex justify-between text-xs font-mono mb-2">
+                    <span class="text-slate-300">Installed Agrivoltaic Capacity</span>
+                    <span id="calc-mw-value" class="text-emerald-400 font-bold text-sm">2.5 MW</span>
+                  </div>
+                  <input type="range" id="calc-mw-slider" min="0.5" max="10" step="0.5" value="2.5" class="w-full">
+                  <div class="flex justify-between text-[10px] text-slate-400 font-mono mt-1">
+                    <span>0.5 MW (~3 Acres)</span>
+                    <span>10.0 MW (~60 Acres)</span>
+                  </div>
+                </div>
+
+                <div>
+                  <label for="calc-crop-select" class="block text-xs font-mono text-slate-300 mb-2">Crop Cultivar / Microclimate Sensitivity</label>
+                  <select id="calc-crop-select" class="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-emerald-500">
+                    <option value="1.45">High-Value Berries &amp; Vineyard (High Heat Vulnerability)</option>
+                    <option value="1.20">Leafy Greens &amp; Specialty Vegetables</option>
+                    <option value="1.00" selected>Fruit Orchards &amp; Nut Trees</option>
+                    <option value="0.75">Cereal Grains &amp; Forage Grasses</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <!-- Calculation Output Cards -->
+            <div class="lg:col-span-7 bg-slate-950/80 border border-white/10 rounded-2xl p-6 sm:p-8">
+              <span class="text-xs font-mono text-slate-400 uppercase tracking-widest block mb-6">Estimated Annual Value Creation</span>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                <div class="p-4 rounded-xl bg-slate-900/70 border border-white/5">
+                  <span class="text-xs text-slate-400 font-mono block">Grid Arbitrage &amp; VPP Revenue</span>
+                  <span id="calc-result-arbitrage" class="text-2xl font-bold font-mono text-amber-400 mt-1 block">$210,500</span>
+                  <span class="text-[11px] text-slate-400 mt-1 block">Surplus export &amp; capacity balancing</span>
+                </div>
+
+                <div class="p-4 rounded-xl bg-slate-900/70 border border-white/5">
+                  <span class="text-xs text-slate-400 font-mono block">Crop Yield &amp; Moisture Gain</span>
+                  <span id="calc-result-yield" class="text-2xl font-bold font-mono text-emerald-400 mt-1 block">$81,250</span>
+                  <span class="text-[11px] text-slate-400 mt-1 block">Evapotranspiration &amp; scorch protection</span>
+                </div>
+              </div>
+
+              <div class="p-6 rounded-xl bg-emerald-950/30 border border-emerald-500/30 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div>
+                  <span class="text-xs font-mono uppercase text-emerald-400 tracking-wider">Total Projected Annual Value</span>
+                  <span id="calc-result-total" class="text-3xl sm:text-4xl font-extrabold font-mono text-white mt-1 block">$291,750</span>
+                  <span class="text-xs text-slate-400 mt-1 block">Net return after software orchestration fees</span>
+                </div>
+                <div class="text-left sm:text-right border-t sm:border-t-0 sm:border-l border-white/10 pt-3 sm:pt-0 sm:pl-6">
+                  <span class="text-xs font-mono text-cyan-400 uppercase tracking-wider">Carbon Offset</span>
+                  <span id="calc-result-co2" class="text-lg font-bold font-mono text-slate-200 mt-1 block">2,800 metric tons/yr</span>
+                  <span class="text-[11px] text-slate-400">Verifiable REC generation</span>
+                </div>
+              </div>
+
+              <div class="mt-6 flex justify-end">
+                <a href="#contact" class="inline-flex items-center gap-2 text-xs font-mono font-bold text-emerald-400 hover:text-emerald-300">
+                  <span>Request formal site feasibility audit</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         PRICING SECTION: 3 TIERS (PILOT, COMMERCIAL SCALE, ENTERPRISE GRID)
+         ======================================================================== -->
+    <section id="pricing" class="py-24 border-t border-white/5 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-xs uppercase font-mono tracking-widest text-emerald-400 font-bold bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">Transparent Software Subscription</span>
+          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mt-4">
+            Predictable Software Orchestration Tiers
+          </h2>
+          <p class="mt-4 text-slate-300 leading-relaxed">
+            Pure software subscription model partnered with your existing solar EPC and equipment OEMs. Aligned incentives with transparent revenue share on grid arbitrage.
+          </p>
+
+          <!-- Monthly / Annual Toggle -->
+          <div class="mt-8 flex items-center justify-center gap-3">
+            <span class="text-sm font-medium text-slate-300">Monthly</span>
+            <label class="relative inline-flex items-center cursor-pointer">
+              <input type="checkbox" id="billing-toggle" class="sr-only peer">
+              <div class="w-11 h-6 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500"></div>
+            </label>
+            <span class="text-sm font-medium text-slate-300 flex items-center gap-1.5">
+              Annual <span class="text-[11px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 font-bold">Save 15%</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- 3 Pricing Cards -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          
+          <!-- Tier 1: Microgrid Pilot -->
+          <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start mb-4">
+                <div>
+                  <h3 class="text-xl font-bold text-white">Pilot Tier</h3>
+                  <p class="text-xs text-slate-400 mt-1">For single-site pilot deployments</p>
+                </div>
+                <span class="px-2.5 py-1 rounded font-mono text-[11px] font-semibold bg-white/5 text-slate-300 border border-white/10">Up to 1 MW</span>
+              </div>
+
+              <div class="my-6">
+                <div class="flex items-baseline gap-1">
+                  <span id="price-pilot" class="text-4xl font-extrabold font-mono text-white">$249</span>
+                  <span class="price-period text-xs text-slate-400 font-mono">/MW/month</span>
+                </div>
+                <p class="text-xs font-mono text-emerald-400 mt-2">+ 18% Grid Arbitrage Revenue Share</p>
+              </div>
+
+              <div class="border-t border-white/10 pt-6 space-y-3.5 text-xs text-slate-300">
+                <div class="flex items-center gap-2.5">
+                  <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                  <span>Single crop cultivar PAR tracking</span>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                  <span>Weather &amp; capacitive soil IoT integration</span>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                  <span>Basic cold storage load synchronization</span>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                  <span>Standard day-ahead wholesale spot market dispatch</span>
+                </div>
+                <div class="flex items-center gap-2.5 text-slate-500">
+                  <i data-lucide="minus" class="w-4 h-4 shrink-0"></i>
+                  <span>Multi-spectral satellite computer vision</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-8">
+              <a href="#contact" class="w-full py-3 px-4 rounded-xl border border-white/10 hover:border-emerald-500/40 bg-slate-900/60 hover:bg-slate-800/60 text-slate-200 font-semibold text-xs text-center block transition-all">
+                Request Pilot Deployment
+              </a>
+            </div>
+          </div>
+
+          <!-- Tier 2: Commercial Scale (Featured) -->
+          <div class="glass-panel glass-panel-glow p-8 rounded-2xl flex flex-col justify-between relative border-emerald-500/50 shadow-2xl shadow-emerald-950/40">
+            <!-- Featured Ribbon -->
+            <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-emerald-500 text-slate-950 font-mono font-bold text-[10px] uppercase tracking-wider shadow-md">
+              Most Popular Commercial
+            </div>
+
+            <div>
+              <div class="flex justify-between items-start mb-4">
+                <div>
+                  <h3 class="text-xl font-bold text-white">Commercial Scale</h3>
+                  <p class="text-xs text-slate-400 mt-1">For commercial farms &amp; orchard developers</p>
+                </div>
+                <span class="px-2.5 py-1 rounded font-mono text-[11px] font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">1 to 5 MW</span>
+              </div>
+
+              <div class="my-6">
+                <div class="flex items-baseline gap-1">
+                  <span id="price-commercial" class="text-4xl font-extrabold font-mono text-emerald-400">$349</span>
+                  <span class="price-period text-xs text-slate-400 font-mono">/MW/month</span>
+                </div>
+                <p class="text-xs font-mono text-emerald-300 mt-2">+ 15% Grid Arbitrage Revenue Share</p>
+              </div>
+
+              <div class="border-t border-white/10 pt-6 space-y-3.5 text-xs text-slate-300">
+                <div class="flex items-center gap-2.5">
+                  <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                  <span>Multi-spectral satellite canopy computer vision</span>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                  <span>Multi-zone sub-canopy microclimate modeling</span>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                  <span>Groundwater pump &amp; grain dryer demand response</span>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                  <span>Real-time 5-minute frequency response &amp; VPP bidding</span>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                  <span>Standard Solar EPC &amp; Inverter OEM API gateway</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-8">
+              <a href="#contact" class="w-full py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-bold text-xs text-center block shadow-lg shadow-emerald-500/20 transition-all">
+                Get Started with Commercial
+              </a>
+            </div>
+          </div>
+
+          <!-- Tier 3: Enterprise Grid Operator -->
+          <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between">
+            <div>
+              <div class="flex justify-between items-start mb-4">
+                <div>
+                  <h3 class="text-xl font-bold text-white">Enterprise Grid</h3>
+                  <p class="text-xs text-slate-400 mt-1">Multi-site agricultural co-ops &amp; utilities</p>
+                </div>
+                <span class="px-2.5 py-1 rounded font-mono text-[11px] font-semibold bg-white/5 text-slate-300 border border-white/10">5+ MW Multi-Site</span>
+              </div>
+
+              <div class="my-6">
+                <div class="flex items-baseline gap-1">
+                  <span id="price-enterprise" class="text-4xl font-extrabold font-mono text-white">$449</span>
+                  <span class="price-period text-xs text-slate-400 font-mono">/MW/month</span>
+                </div>
+                <p class="text-xs font-mono text-cyan-400 mt-2">+ 10% Grid Arbitrage Revenue Share</p>
+              </div>
+
+              <div class="border-t border-white/10 pt-6 space-y-3.5 text-xs text-slate-300">
+                <div class="flex items-center gap-2.5">
+                  <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                  <span>Custom reinforcement learning cultivar fine-tuning</span>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                  <span>Multi-feeder distribution microgrid balancing</span>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                  <span>Carbon offset &amp; REC certificate ledger clearing</span>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                  <span>Custom SCADA telemetry &amp; utility DMS interconnect</span>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <i data-lucide="check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                  <span>Dedicated Grid Systems Engineer &amp; 99.99% SLA</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-8">
+              <a href="#contact" class="w-full py-3 px-4 rounded-xl border border-white/10 hover:border-cyan-500/40 bg-slate-900/60 hover:bg-slate-800/60 text-slate-200 font-semibold text-xs text-center block transition-all">
+                Contact Enterprise Engineering
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         ABOUT US SECTION: MISSION STATEMENT & SINGLE FOUNDER / CEO
+         ======================================================================== -->
+    <section id="about" class="py-24 border-t border-white/5 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Mission & Objective Statement -->
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-xs uppercase font-mono tracking-widest text-emerald-400 font-bold bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">About AgriGrid Dynamics</span>
+          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mt-4">
+            Uniting Agricultural Resilience with Clean Grid Stability
+          </h2>
+          <p class="mt-4 text-slate-300 leading-relaxed text-base">
+            AgriGrid Dynamics was founded to resolve the growing friction between food production and renewable land use. By delivering an autonomous software orchestration layer that integrates directly with solar EPC partners and hardware OEMs, we transform agricultural land into high-efficiency dual-yield infrastructure.
+          </p>
+        </div>
+
+        <!-- Services & Objective Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+          
+          <div class="glass-panel p-8 rounded-2xl">
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-5 text-emerald-400">
+              <i data-lucide="target" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Our Core Services</h3>
+            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+              We provide pure-play software orchestration, eliminating the need for custom proprietary hardware. Our software connects seamlessly to existing solar trackers, inverters, farm cold storage facilities, and utility SCADA systems.
+            </p>
+            <ul class="space-y-2 text-xs text-slate-300 font-mono">
+              <li class="flex items-center gap-2">
+                <span class="text-emerald-400">✓</span> Dynamic Agrivoltaic Tracker Firmware Optimization
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-emerald-400">✓</span> On-Farm Cold Storage &amp; Irrigation Demand Response
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-emerald-400">✓</span> Virtual Power Plant (VPP) Aggregation &amp; Market Arbitrage
+              </li>
+            </ul>
+          </div>
+
+          <div class="glass-panel p-8 rounded-2xl">
+            <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-5 text-cyan-400">
+              <i data-lucide="compass" class="w-5 h-5"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Our Overall Objective</h3>
+            <p class="text-slate-300 text-sm leading-relaxed mb-4">
+              Our objective is to empower farmers to shield their crops from escalating heat stress and water loss while generating dependable, recurring energy revenue from regional electricity balancing markets.
+            </p>
+            <ul class="space-y-2 text-xs text-slate-300 font-mono">
+              <li class="flex items-center gap-2">
+                <span class="text-cyan-400">✓</span> 30%–45% reduction in agricultural evapotranspiration
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-cyan-400">✓</span> 2.4x higher energy revenue realization via wholesale arbitrage
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-cyan-400">✓</span> Zero competition between food security and clean power targets
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- Single Founder Section (Strictly Only One Founder, Clean & Independent) -->
+        <div class="max-w-3xl mx-auto">
+          <div class="glass-panel p-8 sm:p-10 rounded-2xl relative overflow-hidden">
+            <div class="flex flex-col sm:flex-row items-center sm:items-start gap-8">
+              
+              <!-- Founder Image Container -->
+              <div class="shrink-0 relative">
+                <div class="w-36 h-36 sm:w-44 sm:h-44 rounded-2xl overflow-hidden border-2 border-emerald-500/30 bg-slate-900 shadow-xl flex items-center justify-center">
+                  <img src="founder.jpg" alt="Joshua - Founder & CEO" class="w-full h-full object-cover" style="object-position: center 18%;" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80';">
+                </div>
+                <div class="absolute -bottom-2 -right-2 px-2 py-0.5 rounded font-mono text-[10px] bg-emerald-500 text-slate-950 font-bold">
+                  FOUNDER
+                </div>
+              </div>
+
+              <!-- Founder Biography & Title -->
+              <div class="text-center sm:text-left flex-1">
+                <div class="flex flex-col sm:flex-row sm:items-baseline gap-2 mb-2">
+                  <h3 class="text-2xl font-bold text-white">Joshua</h3>
+                  <span class="text-xs font-mono text-emerald-400 tracking-wider uppercase">Founder &amp; Chief Executive Officer</span>
+                </div>
+                <span class="text-xs font-mono text-slate-400 tracking-wider uppercase block mb-4">Leadership // AgriGrid Dynamics</span>
+                <p class="text-slate-300 text-sm leading-relaxed mb-5">
+                  Technologist and systems innovator leading AgriGrid Dynamics in pioneering autonomous dual-use agrivoltaics and microgrid energy orchestration. With a focus on bridging plant physiology computer vision with real-time wholesale energy market dispatch, Joshua drives the company's software-first approach—partnering with agricultural operators and solar OEMs to protect vulnerable crop microclimates while maximizing clean energy yields and rural grid stability.
+                </p>
+                
+                <div class="flex items-center justify-center sm:justify-start gap-4 text-xs font-mono text-slate-400">
+                  <span class="flex items-center gap-1.5">
+                    <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i> Executive Leadership
+                  </span>
+                  <span>•</span>
+                  <span class="flex items-center gap-1.5">
+                    <i data-lucide="cpu" class="w-4 h-4 text-cyan-400"></i> Autonomous Systems
+                  </span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         CONTACT US SECTION: STRICTLY 1 EMAIL & 1 PHONE + DEMO FORM
+         ======================================================================== -->
+    <section id="contact" class="py-24 border-t border-white/5 relative bg-slate-950/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-xs uppercase font-mono tracking-widest text-emerald-400 font-bold bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">Get In Touch</span>
+          <h2 class="text-3xl sm:text-4xl font-bold tracking-tight mt-4">
+            Request a Technical Site Feasibility Audit
+          </h2>
+          <p class="mt-4 text-slate-300 leading-relaxed">
+            Our systems engineering team evaluates farm topography, crop canopy photosynthetic requirements, solar tracker compatibility, and regional wholesale utility interconnects.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+          
+          <!-- Contact Details (Strictly Only 1 Business Email & 1 Phone Number) -->
+          <div class="lg:col-span-5 space-y-6">
+            <div class="glass-panel p-8 rounded-2xl space-y-6">
+              <div>
+                <h3 class="text-xl font-bold text-white mb-2">Direct Inquiries</h3>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                  For pilot site feasibility reviews, OEM integration partnerships, or utility VPP dispatch inquiries:
+                </p>
+              </div>
+
+              <!-- Only One Business Email -->
+              <div class="flex items-start gap-4 p-4 rounded-xl bg-slate-900/60 border border-white/5">
+                <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 shrink-0">
+                  <i data-lucide="mail" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <span class="text-[11px] font-mono text-slate-400 uppercase tracking-wider block">Official Business Email</span>
+                  <a href="mailto:joshua@agrigriddynamics.site" class="text-sm font-mono font-semibold text-slate-200 hover:text-emerald-400 transition-colors">
+                    joshua@agrigriddynamics.site
+                  </a>
+                </div>
+              </div>
+
+              <!-- Only One Phone Number -->
+              <div class="flex items-start gap-4 p-4 rounded-xl bg-slate-900/60 border border-white/5">
+                <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400 shrink-0">
+                  <i data-lucide="phone" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <span class="text-[11px] font-mono text-slate-400 uppercase tracking-wider block">Direct Telephone</span>
+                  <a href="tel:+2347083634675" class="text-sm font-mono font-semibold text-slate-200 hover:text-cyan-400 transition-colors">
+                    +234 708 363 4675
+                  </a>
+                </div>
+              </div>
+
+              <!-- System Availability Note -->
+              <div class="pt-2 text-xs font-mono text-slate-400 flex items-center gap-2">
+                <span class="live-beacon"></span>
+                <span>Response time within 24 business hours</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact / Demo Inquiry Form -->
+          <div class="lg:col-span-7">
+            <div class="glass-panel p-8 rounded-2xl">
+              <h3 class="text-xl font-bold text-white mb-6">Submit Site Feasibility Inquiry</h3>
+
+              <!-- Form Alert Notification -->
+              <div id="contact-form-alert" class="hidden mb-6 p-4 rounded-xl bg-emerald-950/40 border border-emerald-500/40 text-xs font-mono"></div>
+
+              <form id="contact-form" class="space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label for="contact-name" class="block text-xs font-mono text-slate-300 mb-1.5">Full Name *</label>
+                    <input type="text" id="contact-name" required placeholder="Dr. Sarah Jenkins" class="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-emerald-500">
+                  </div>
+                  <div>
+                    <label for="contact-email" class="block text-xs font-mono text-slate-300 mb-1.5">Business Email *</label>
+                    <input type="email" id="contact-email" required placeholder="s.jenkins@vineyardops.com" class="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-emerald-500">
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label for="contact-organization" class="block text-xs font-mono text-slate-300 mb-1.5">Farm / Co-op / Organization</label>
+                    <input type="text" id="contact-organization" placeholder="Highland Valley Agrivoltaic Co-op" class="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-emerald-500">
+                  </div>
+                  <div>
+                    <label for="contact-capacity" class="block text-xs font-mono text-slate-300 mb-1.5">Planned / Installed Capacity</label>
+                    <select id="contact-capacity" class="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-emerald-500">
+                      <option value="under_1mw">&lt; 1 MW (Pilot Site)</option>
+                      <option value="1_to_5mw">1 MW – 5 MW (Commercial Orchard/Farm)</option>
+                      <option value="5_plus_mw">5+ MW (Multi-Feeder Utility Scale)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label for="contact-notes" class="block text-xs font-mono text-slate-300 mb-1.5">Site Parameters &amp; Crops (Optional)</label>
+                  <textarea id="contact-notes" rows="4" placeholder="Detail your crop type (e.g. wine grapes, berries), current tracker hardware, or local utility interconnection..." class="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-2.5 text-sm text-slate-200 focus:outline-none focus:border-emerald-500 resize-none"></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-bold text-sm shadow-xl shadow-emerald-500/20 flex items-center justify-center gap-2 transition-all">
+                  <span>Submit Technical Request</span>
+                  <i data-lucide="send" class="w-4 h-4"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       FOOTER: MINIMALIST ENGINEERING FOOTER
+       ======================================================================== -->
+  <footer class="border-t border-white/5 py-12 bg-slate-950 text-slate-400 text-xs font-mono">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        
+        <div class="flex items-center gap-3">
+          <div class="w-7 h-7 rounded-lg bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 14l8-8 8 8"/>
+              <path d="M12 6v14"/>
+            </svg>
+          </div>
+          <div>
+            <span class="text-sm font-bold text-white tracking-tight">AgriGrid Dynamics</span>
+            <span class="text-[10px] text-slate-400 ml-2">Dual-Use Agrivoltaics &amp; Microgrid Orchestration</span>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-6 text-slate-400">
+          <a href="#home" class="hover:text-white transition-colors">Home</a>
+          <a href="#solution" class="hover:text-white transition-colors">AI Solution</a>
+          <a href="#how-it-works" class="hover:text-white transition-colors">How It Works</a>
+          <a href="#pricing" class="hover:text-white transition-colors">Pricing</a>
+          <a href="#about" class="hover:text-white transition-colors">About Us</a>
+          <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+        </div>
+
+        <div class="flex items-center gap-2 text-slate-400">
+          <span>&copy; 2026 AgriGrid Dynamics. All rights reserved.</span>
+        </div>
+
+      </div>
+    </div>
+  </footer>
+
+  <!-- Application Script -->
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="gridGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10B981"/>
+      <stop offset="50%" stop-color="#06B6D4"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+    <linearGradient id="sunGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+  <!-- Background Badge -->
+  <rect width="64" height="64" rx="14" fill="#0B132B"/>
+  
+  <!-- Subtle Grid Telemetry Lines -->
+  <path d="M12 44L52 44" stroke="#1E293B" stroke-width="1.5" stroke-dasharray="2 2"/>
+  <path d="M22 14L22 50" stroke="#1E293B" stroke-width="1.5" stroke-dasharray="2 2"/>
+  <path d="M42 14L42 50" stroke="#1E293B" stroke-width="1.5" stroke-dasharray="2 2"/>
+  
+  <!-- Agrivoltaic Angled Solar Canopy Bar -->
+  <g transform="rotate(-18 32 26)">
+    <rect x="14" y="23" width="36" height="7" rx="3.5" fill="url(#gridGrad)"/>
+    <line x1="26" y1="23" x2="26" y2="30" stroke="#0B132B" stroke-width="1.5"/>
+    <line x1="38" y1="23" x2="38" y2="30" stroke="#0B132B" stroke-width="1.5"/>
+  </g>
+  
+  <!-- Solar Tracker Pylon / Stem -->
+  <path d="M32 28V46" stroke="#06B6D4" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- Crop Shoot / Photosynthetic Leaf emerging at base -->
+  <path d="M32 44C32 44 23 42 22 34C28 34 32 38 32 44Z" fill="#10B981" opacity="0.9"/>
+  <path d="M32 40C32 40 41 39 42 32C36 32 32 36 32 40Z" fill="#34D399" opacity="0.9"/>
+  
+  <!-- Microgrid Energy Node Spark -->
+  <circle cx="32" cy="16" r="3.5" fill="#F59E0B"/>
+  <circle cx="32" cy="16" r="6" stroke="#F59E0B" stroke-width="1" opacity="0.4"/>
+</svg>

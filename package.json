@@ -1,0 +1,19 @@
+{
+  "name": "agrigrid-dynamics",
+  "version": "1.0.0",
+  "description": "AgriGrid Dynamics - Autonomous Dual-Use Agrivoltaics & Microgrid Orchestrator Website",
+  "main": "serve.js",
+  "scripts": {
+    "start": "node serve.js",
+    "dev": "node serve.js",
+    "serve": "node serve.js"
+  },
+  "keywords": [
+    "agrivoltaics",
+    "microgrid",
+    "energy-orchestration",
+    "clean-tech"
+  ],
+  "author": "AgriGrid Dynamics",
+  "license": "ISC"
+}
