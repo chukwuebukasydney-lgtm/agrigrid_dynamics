@@ -62,7 +62,7 @@ You can also simply open `index.html` directly in any modern web browser.
 
 - **Founder & CEO**: Chigoziem
 - **Email**: [chigoziem@agrigrid.site](mailto:chigoziem@agrigrid.site)
-- **Phone**: [+234 905 821 7277](tel:+2349058217277)
+- **Phone**: [+234 706 457 8464](tel:+2347064578464)
 
 ---
 
