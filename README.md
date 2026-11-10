@@ -60,9 +60,9 @@ You can also simply open `index.html` directly in any modern web browser.
 
 ## 📞 Leadership & Contact
 
-- **Founder & CEO**: Joshua
-- **Email**: [joshua@agrigriddynamics.site](mailto:joshua@agrigriddynamics.site)
-- **Phone**: [+234 708 363 4675](tel:+2347083634675)
+- **Founder & CEO**: Chigoziem
+- **Email**: [chigoziem@agrigrid.site](mailto:chigoziem@agrigrid.site)
+- **Phone**: [+234 905 821 7277](tel:+2349058217277)
 
 ---
 
